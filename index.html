@@ -15,11 +15,19 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at top, #0b1a1f, #020607);
+      
+    background:
+  linear-gradient(rgba(2,6,7,0.85), rgba(2,6,7,0.95)),
+  url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80');
+
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
       color: #e6f0f2;
       min-height: 100vh;
       overflow-x: hidden;
-    }
+}
+
 
     /* Fumaça animada */
     .fog {
@@ -128,6 +136,25 @@
       opacity: 0.6;
     }
   </style>
+  .image-block {
+  margin: 100px auto;
+  max-width: 720px;
+  text-align: center;
+}
+
+.image-block img {
+  width: 100%;
+  border-radius: 12px;
+  opacity: 0.85;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+.image-caption {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  letter-spacing: 0.1em;
+}
 </head>
 <body>
   <div class="fog"></div>
