@@ -5,156 +5,156 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A Chegada</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      
+  body {
+    font-family: 'Inter', sans-serif;
     background:
-  linear-gradient(rgba(2,6,7,0.85), rgba(2,6,7,0.95)),
-  url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80');
+      linear-gradient(rgba(2,6,7,0.85), rgba(2,6,7,0.95)),
+      url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #e6f0f2;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: #e6f0f2;
-      min-height: 100vh;
-      overflow-x: hidden;
-}
+  /* Fumaça animada */
+  .fog {
+    position: fixed;
+    inset: 0;
+    background: url('https://i.imgur.com/8KQ0KQn.png');
+    background-size: cover;
+    opacity: 0.15;
+    animation: fogMove 120s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
 
+  @keyframes fogMove {
+    from { background-position: 0 0; }
+    to { background-position: 10000px 0; }
+  }
 
-    /* Fumaça animada */
-    .fog {
-      position: fixed;
-      inset: 0;
-      background: url('https://i.imgur.com/8KQ0KQn.png');
-      background-size: cover;
-      opacity: 0.15;
-      animation: fogMove 120s linear infinite;
-      pointer-events: none;
-      z-index: 1;
+  .container {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 24px 120px;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  section {
+    margin-bottom: 80px;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeUp 1.2s ease forwards;
+  }
+
+  section:nth-child(2) { animation-delay: 0.3s; }
+  section:nth-child(3) { animation-delay: 0.6s; }
+  section:nth-child(4) { animation-delay: 0.9s; }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
+  }
 
-    @keyframes fogMove {
-      from { background-position: 0 0; }
-      to { background-position: 10000px 0; }
-    }
+  .subtitle {
+    font-size: 1.2rem;
+    letter-spacing: 0.15em;
+    color: #9fbec7;
+    margin-bottom: 16px;
+  }
 
-    .container {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 80px 24px 120px;
-    }
+  p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #d7e6ea;
+    max-width: 700px;
+  }
 
-    h1 {
-      font-size: 3rem;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      text-align: center;
-      margin-bottom: 60px;
-    }
+  .circle {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    border: 1px solid rgba(159, 190, 199, 0.3);
+    margin: 80px auto;
+    position: relative;
+  }
 
-    section {
-      margin-bottom: 80px;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeUp 1.2s ease forwards;
-    }
+  .circle::before,
+  .circle::after {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border-radius: 50%;
+    border: 1px dashed rgba(159, 190, 199, 0.2);
+  }
 
-    section:nth-child(2) { animation-delay: 0.3s; }
-    section:nth-child(3) { animation-delay: 0.6s; }
-    section:nth-child(4) { animation-delay: 0.9s; }
+  .circle::after {
+    inset: 45px;
+    border-style: solid;
+    opacity: 0.4;
+  }
 
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .subtitle {
-      font-size: 1.2rem;
-      letter-spacing: 0.15em;
-      color: #9fbec7;
-      margin-bottom: 16px;
-    }
-
-    p {
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: #d7e6ea;
-      max-width: 700px;
-    }
-
-    .circle {
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      border: 1px solid rgba(159, 190, 199, 0.3);
-      margin: 80px auto;
-      position: relative;
-    }
-
-    .circle::before,
-    .circle::after {
-      content: '';
-      position: absolute;
-      inset: 20px;
-      border-radius: 50%;
-      border: 1px dashed rgba(159, 190, 199, 0.2);
-    }
-
-    .circle::after {
-      inset: 45px;
-      border-style: solid;
-      opacity: 0.4;
-    }
-
-    .final {
-      text-align: center;
-      font-size: 1.3rem;
-      line-height: 2.1;
-      margin-top: 120px;
-    }
-
-    .final span {
-      color: #a8d7e0;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 120px;
-      font-size: 0.9rem;
-      opacity: 0.6;
-    }
-  </style>
+  /* ✅ BLOCO DAS IMAGENS (AGORA NO LUGAR CERTO) */
   .image-block {
-  margin: 100px auto;
-  max-width: 720px;
-  text-align: center;
-}
+    margin: 100px auto;
+    max-width: 720px;
+    text-align: center;
+  }
 
-.image-block img {
-  width: 100%;
-  border-radius: 12px;
-  opacity: 0.85;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-}
+  .image-block img {
+    width: 100%;
+    border-radius: 12px;
+    opacity: 0.85;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  }
 
-.image-caption {
-  margin-top: 12px;
-  font-size: 0.85rem;
-  opacity: 0.6;
-  letter-spacing: 0.1em;
-}
+  .image-caption {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    letter-spacing: 0.1em;
+  }
+
+  .final {
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: 2.1;
+    margin-top: 120px;
+  }
+
+  .final span {
+    color: #a8d7e0;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 120px;
+    font-size: 0.9rem;
+    opacity: 0.6;
+  }
+</style>
+
 </head>
 <body>
   <div class="fog"></div>
