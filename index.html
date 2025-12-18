@@ -21,23 +21,6 @@
     overflow-x: hidden;
   }
 
-  /* Fumaça animada */
-  .fog {
-    position: fixed;
-    inset: 0;
-    background: url('https://i.imgur.com/8KQ0KQn.png');
-    background-size: cover;
-    opacity: 0.15;
-    animation: fogMove 120s linear infinite;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  @keyframes fogMove {
-    from { background-position: 0 0; }
-    to { background-position: 10000px 0; }
-  }
-
   /* Nuvens em movimento - camada 1 (mais rápida) */
   .clouds {
     position: fixed;
@@ -619,8 +602,6 @@
 
 </head>
 <body>
-  <div class="fog"></div>
-  
   <!-- Nuvens em movimento -->
   <div class="clouds">
     <div class="cloud cloud1"></div>
