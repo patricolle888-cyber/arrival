@@ -2,7 +2,10 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#0a0e12" />
   <title>A Chegada</title>
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
@@ -15,10 +18,37 @@
 
   body {
     font-family: 'Inter', sans-serif;
-    background: #0a0f14;
+    background: 
+      radial-gradient(ellipse at top, rgba(20, 25, 30, 0.5) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom, rgba(15, 20, 25, 0.4) 0%, transparent 50%),
+      linear-gradient(135deg, #0a0e12 0%, #141a21 25%, #1a2129 50%, #141a21 75%, #0a0e12 100%);
+    background-size: 100% 100%, 100% 100%, 100% 100%;
     color: #e6f0f2;
     min-height: 100vh;
     overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Efeito de luz ambiente muito sutil */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(60, 70, 80, 0.08) 0%, transparent 60%);
+    animation: ambientGlow 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @keyframes ambientGlow {
+    0%, 100% { 
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    50% { 
+      opacity: 0.4;
+      transform: scale(1.1);
+    }
   }
 
   /* Nuvens em movimento - camada 1 (mais rápida) */
@@ -32,7 +62,7 @@
 
   .cloud {
     position: absolute;
-    background: radial-gradient(ellipse at center, rgba(200, 220, 230, 0.15) 0%, rgba(150, 170, 180, 0.08) 40%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(80, 90, 100, 0.15) 0%, rgba(60, 70, 80, 0.08) 40%, transparent 70%);
     border-radius: 50%;
     filter: blur(40px);
   }
@@ -108,17 +138,17 @@
     width: 400px;
     height: 600px;
     background: 
-      radial-gradient(ellipse at center, rgba(40, 50, 60, 0.6) 0%, rgba(20, 25, 30, 0.4) 50%, transparent 70%),
-      linear-gradient(180deg, rgba(30, 40, 50, 0.5) 0%, rgba(15, 20, 25, 0.3) 100%);
+      radial-gradient(ellipse at center, rgba(50, 60, 70, 0.5) 0%, rgba(30, 40, 50, 0.35) 50%, transparent 70%),
+      linear-gradient(180deg, rgba(40, 50, 60, 0.4) 0%, rgba(20, 30, 40, 0.3) 100%);
     border-radius: 50% / 60%;
-    opacity: 0.25;
+    opacity: 0.35;
     animation: float 8s ease-in-out infinite, glow 4s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
-    filter: blur(2px);
+    filter: blur(1.5px);
     box-shadow: 
-      0 0 100px rgba(100, 150, 180, 0.3),
-      inset 0 0 80px rgba(50, 80, 100, 0.2);
+      0 0 120px rgba(70, 80, 90, 0.4),
+      inset 0 0 80px rgba(50, 60, 70, 0.3);
     transition: transform 0.5s ease-out;
   }
 
@@ -130,7 +160,7 @@
     transform: translate(-50%, -50%);
     width: 90%;
     height: 90%;
-    background: radial-gradient(ellipse at center, rgba(80, 120, 140, 0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(70, 85, 100, 0.2) 0%, transparent 70%);
     border-radius: 50% / 60%;
     animation: pulse 3s ease-in-out infinite;
   }
@@ -146,12 +176,12 @@
 
   @keyframes glow {
     0%, 100% { 
-      opacity: 0.2;
-      filter: blur(2px);
+      opacity: 0.3;
+      filter: blur(1.5px);
     }
     50% { 
-      opacity: 0.35;
-      filter: blur(3px);
+      opacity: 0.4;
+      filter: blur(2px);
     }
   }
 
@@ -178,9 +208,9 @@
     position: absolute;
     width: 3px;
     height: 3px;
-    background: rgba(168, 215, 224, 0.6);
+    background: rgba(140, 155, 170, 0.5);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(168, 215, 224, 0.8);
+    box-shadow: 0 0 10px rgba(120, 135, 150, 0.4);
     animation: floatUp 15s linear infinite;
   }
 
@@ -224,8 +254,9 @@
     position: absolute;
     width: 80px;
     height: 80px;
-    border: 2px solid rgba(168, 215, 224, 0.15);
+    border: 2px solid rgba(120, 135, 150, 0.25);
     border-radius: 50%;
+    box-shadow: 0 0 15px rgba(90, 105, 120, 0.2);
     animation: rotateSymbol 30s linear infinite, fadeInOut 8s ease-in-out infinite;
   }
 
@@ -236,8 +267,9 @@
     left: 50%;
     width: 60%;
     height: 60%;
-    border: 1px solid rgba(168, 215, 224, 0.1);
+    border: 1px solid rgba(120, 135, 150, 0.2);
     border-radius: 50%;
+    box-shadow: 0 0 10px rgba(90, 105, 120, 0.15);
     transform: translate(-50%, -50%);
   }
 
@@ -251,8 +283,8 @@
   }
 
   @keyframes fadeInOut {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 0.3; }
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.4; }
   }
 
   .container {
@@ -356,10 +388,10 @@
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 2px solid rgba(159, 190, 199, 0.4);
+    border: 2px solid rgba(120, 135, 150, 0.4);
     box-shadow: 
-      0 0 40px rgba(159, 190, 199, 0.2),
-      inset 0 0 40px rgba(159, 190, 199, 0.1);
+      0 0 40px rgba(90, 105, 120, 0.25),
+      inset 0 0 40px rgba(80, 95, 110, 0.2);
     animation: rotate 60s linear infinite;
   }
 
@@ -370,9 +402,9 @@
     width: 70%;
     height: 70%;
     border-radius: 50%;
-    border: 1px dashed rgba(159, 190, 199, 0.3);
-    border-left-color: rgba(168, 215, 224, 0.6);
-    border-right-color: rgba(168, 215, 224, 0.6);
+    border: 1px dashed rgba(120, 135, 150, 0.35);
+    border-left-color: rgba(140, 155, 170, 0.5);
+    border-right-color: rgba(140, 155, 170, 0.5);
     animation: rotate-reverse 40s linear infinite;
   }
 
@@ -380,7 +412,7 @@
   .time-ring {
     position: absolute;
     border-radius: 50%;
-    border: 1px solid rgba(159, 190, 199, 0.25);
+    border: 1px solid rgba(120, 135, 150, 0.3);
   }
 
   .ring1 {
@@ -420,9 +452,9 @@
     position: absolute;
     width: 40px;
     height: 40px;
-    border: 2px solid rgba(168, 215, 224, 0.6);
+    border: 2px solid rgba(140, 155, 170, 0.6);
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(168, 215, 224, 0.3);
+    box-shadow: 0 0 20px rgba(110, 125, 140, 0.35);
   }
 
   .infinity::before {
@@ -440,9 +472,9 @@
     position: absolute;
     width: 4px;
     height: 4px;
-    background: rgba(168, 215, 224, 0.8);
+    background: rgba(140, 155, 170, 0.6);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(168, 215, 224, 0.5);
+    box-shadow: 0 0 12px rgba(120, 135, 150, 0.4);
   }
 
   .particle1 {
@@ -598,6 +630,157 @@
     font-size: 24px;
     color: #a8d7e0;
   }
+
+  /* Media Queries para Mobile/iPhone */
+  @media (max-width: 768px) {
+    body {
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Ajuste do título para mobile */
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      padding: 0 20px;
+    }
+
+    /* Container mais compacto */
+    .container {
+      padding: 60px 20px 100px;
+    }
+
+    /* Subtítulos menores */
+    .subtitle {
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+    }
+
+    /* Texto mais legível no mobile */
+    p {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      text-align: left;
+    }
+
+    /* Seções mais compactas */
+    section {
+      margin-bottom: 60px;
+    }
+
+    /* Círculo do tempo menor */
+    .circle {
+      width: 280px;
+      height: 280px;
+      margin: 80px auto;
+    }
+
+    /* Nave menor e mais sutil no mobile */
+    .arrival-ship {
+      width: 300px;
+      height: 450px;
+      opacity: 0.25;
+    }
+
+    /* Nuvens menores */
+    .cloud1, .cloud2, .cloud3, .cloud4, .cloud5 {
+      width: 250px;
+      height: 100px;
+    }
+
+    /* Partículas menos densas no mobile */
+    .light-particle:nth-child(n+6) {
+      display: none;
+    }
+
+    /* Símbolos Heptapod menores */
+    .heptapod {
+      width: 60px;
+      height: 60px;
+    }
+
+    /* Botão voltar ao topo adaptado para iPhone */
+    .back-to-top {
+      bottom: 30px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+    }
+
+    .back-to-top::before {
+      font-size: 20px;
+    }
+
+    /* Footer mais compacto */
+    footer {
+      margin-top: 60px;
+      margin-bottom: 30px;
+      font-size: 0.85rem;
+      padding: 0 20px;
+    }
+
+    /* Final text mais compacto */
+    .final {
+      margin-top: 80px;
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+
+    /* Ajuste para safe area do iPhone (notch) */
+    .container {
+      padding-top: max(60px, env(safe-area-inset-top));
+      padding-bottom: max(100px, env(safe-area-inset-bottom));
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
+    }
+
+    /* Botão com safe area */
+    .back-to-top {
+      bottom: max(30px, calc(env(safe-area-inset-bottom) + 20px));
+      right: max(20px, calc(env(safe-area-inset-right) + 10px));
+    }
+  }
+
+  /* iPhone específico (iPhone X e superiores com notch) */
+  @media (max-width: 430px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    .circle {
+      width: 240px;
+      height: 240px;
+    }
+
+    .arrival-ship {
+      width: 250px;
+      height: 375px;
+    }
+  }
+
+  /* Modo paisagem no mobile */
+  @media (max-width: 768px) and (orientation: landscape) {
+    .arrival-ship {
+      width: 200px;
+      height: 300px;
+    }
+
+    .circle {
+      width: 200px;
+      height: 200px;
+      margin: 40px auto;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+  }
 </style>
 
 </head>
@@ -693,22 +876,30 @@
   </div>
 
   <script>
-    // Efeito parallax no scroll
-    let lastScroll = 0;
+    // Detectar se é mobile
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     
-    window.addEventListener('scroll', () => {
+    // Efeito parallax no scroll (reduzido para mobile)
+    let lastScroll = 0;
+    let ticking = false;
+    
+    function updateParallax() {
       const scrolled = window.pageYOffset;
       const ship = document.querySelector('.arrival-ship');
       const clouds = document.querySelector('.clouds');
       
+      // Parallax mais sutil no mobile
+      const parallaxMultiplier = isMobile ? 0.15 : 0.3;
+      const cloudsMultiplier = isMobile ? 0.08 : 0.15;
+      
       // Parallax da nave (move mais devagar)
       if (ship) {
-        ship.style.transform = `translate(-50%, calc(-50% + ${scrolled * 0.3}px))`;
+        ship.style.transform = `translate(-50%, calc(-50% + ${scrolled * parallaxMultiplier}px))`;
       }
       
       // Parallax das nuvens (move um pouco mais rápido)
       if (clouds) {
-        clouds.style.transform = `translateY(${scrolled * 0.15}px)`;
+        clouds.style.transform = `translateY(${scrolled * cloudsMultiplier}px)`;
       }
 
       // Mostrar botão voltar ao topo
@@ -720,12 +911,20 @@
       }
 
       lastScroll = scrolled;
-    });
+      ticking = false;
+    }
+    
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }, { passive: true });
 
-    // Animação de scroll para seções
+    // Animação de scroll para seções (com threshold ajustado para mobile)
     const observerOptions = {
-      threshold: 0.2,
-      rootMargin: '0px 0px -100px 0px'
+      threshold: isMobile ? 0.1 : 0.2,
+      rootMargin: isMobile ? '0px 0px -50px 0px' : '0px 0px -100px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -741,13 +940,39 @@
       observer.observe(section);
     });
 
-    // Botão voltar ao topo
+    // Botão voltar ao topo com smooth scroll
     document.getElementById('backToTop').addEventListener('click', () => {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
     });
+
+    // Prevenir zoom no iPhone ao dar duplo clique
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', (e) => {
+      const now = Date.now();
+      if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+
+    // Melhorar performance de animações no mobile
+    if (isMobile) {
+      // Reduzir algumas partículas de luz para melhor performance
+      const particles = document.querySelectorAll('.light-particle');
+      particles.forEach((particle, index) => {
+        if (index >= 5) {
+          particle.style.display = 'none';
+        }
+      });
+    }
+
+    // Adicionar classe ao body quando estiver no mobile
+    if (isMobile) {
+      document.body.classList.add('is-mobile');
+    }
   </script>
 </body>
 </html>
