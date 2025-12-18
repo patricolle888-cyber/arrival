@@ -15,12 +15,7 @@
 
   body {
     font-family: 'Inter', sans-serif;
-    background:
-      linear-gradient(rgba(2,6,7,0.85), rgba(2,6,7,0.95)),
-      url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: linear-gradient(135deg, #0a0f14 0%, #1a2632 50%, #0f1419 100%);
     color: #e6f0f2;
     min-height: 100vh;
     overflow-x: hidden;
@@ -854,5 +849,10 @@
         isPlaying = true;
         musicControl.classList.add('playing');
       }).catch(() => {
-        // Autoplay bloqueado - usuário precisa clicar
-        console.log('Clique no botão
+        // Autoplay bloqueado - usuário precisa clicar no botão de música
+        console.log('Clique no botão de música para iniciar');
+      });
+    });
+  </script>
+</body>
+</html>
