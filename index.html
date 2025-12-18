@@ -9,17 +9,10 @@
   <title>A Chegada</title>
   <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: 'Inter', sans-serif;
-    background: 
-      radial-gradient(ellipse at top, rgba(20, 25, 30, 0.5) 0%, transparent 50%),
+    background: radial-gradient(ellipse at top, rgba(20, 25, 30, 0.5) 0%, transparent 50%),
       radial-gradient(ellipse at bottom, rgba(15, 20, 25, 0.4) 0%, transparent 50%),
       linear-gradient(135deg, #0a0e12 0%, #141a21 25%, #1a2129 50%, #141a21 75%, #0a0e12 100%);
     background-size: 100% 100%, 100% 100%, 100% 100%;
@@ -28,108 +21,39 @@
     overflow-x: hidden;
     position: relative;
   }
-
-  /* Efeito de luz ambiente muito sutil */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(60, 70, 80, 0.08) 0%, transparent 60%);
+    background: radial-gradient(circle at 50% 50%, rgba(80, 100, 120, 0.15) 0%, transparent 60%);
     animation: ambientGlow 8s ease-in-out infinite;
     pointer-events: none;
     z-index: 0;
   }
-
   @keyframes ambientGlow {
-    0%, 100% { 
-      opacity: 0.2;
-      transform: scale(1);
-    }
-    50% { 
-      opacity: 0.4;
-      transform: scale(1.1);
-    }
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
   }
-
-  /* Nuvens em movimento - camada 1 (mais rápida) */
-  .clouds {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    transition: transform 0.5s ease-out;
-  }
-
+  .clouds { position: fixed; inset: 0; pointer-events: none; z-index: 1; transition: transform 0.5s ease-out; }
   .cloud {
     position: absolute;
-    background: radial-gradient(ellipse at center, rgba(80, 90, 100, 0.15) 0%, rgba(60, 70, 80, 0.08) 40%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(100, 120, 140, 0.25) 0%, rgba(80, 100, 120, 0.15) 40%, transparent 70%);
     border-radius: 50%;
-    filter: blur(40px);
+    filter: blur(35px);
   }
-
-  .cloud1 {
-    width: 400px;
-    height: 150px;
-    top: 10%;
-    left: -200px;
-    animation: cloudDrift1 60s linear infinite;
-  }
-
-  .cloud2 {
-    width: 500px;
-    height: 180px;
-    top: 30%;
-    left: -300px;
-    animation: cloudDrift2 80s linear infinite;
-    animation-delay: -20s;
-  }
-
-  .cloud3 {
-    width: 350px;
-    height: 140px;
-    top: 60%;
-    left: -250px;
-    animation: cloudDrift1 70s linear infinite;
-    animation-delay: -40s;
-  }
-
-  .cloud4 {
-    width: 450px;
-    height: 160px;
-    top: 80%;
-    left: -280px;
-    animation: cloudDrift2 90s linear infinite;
-    animation-delay: -60s;
-  }
-
-  .cloud5 {
-    width: 300px;
-    height: 120px;
-    top: 45%;
-    left: -200px;
-    animation: cloudDrift1 65s linear infinite;
-    animation-delay: -30s;
-  }
-
+  .cloud1 { width: 400px; height: 150px; top: 10%; left: -200px; animation: cloudDrift1 60s linear infinite; }
+  .cloud2 { width: 500px; height: 180px; top: 30%; left: -300px; animation: cloudDrift2 80s linear infinite; animation-delay: -20s; }
+  .cloud3 { width: 350px; height: 140px; top: 60%; left: -250px; animation: cloudDrift1 70s linear infinite; animation-delay: -40s; }
+  .cloud4 { width: 450px; height: 160px; top: 80%; left: -280px; animation: cloudDrift2 90s linear infinite; animation-delay: -60s; }
+  .cloud5 { width: 300px; height: 120px; top: 45%; left: -200px; animation: cloudDrift1 65s linear infinite; animation-delay: -30s; }
   @keyframes cloudDrift1 {
-    from { 
-      transform: translateX(0) translateY(0);
-    }
-    to { 
-      transform: translateX(calc(100vw + 400px)) translateY(-20px);
-    }
+    from { transform: translateX(0) translateY(0); }
+    to { transform: translateX(calc(100vw + 400px)) translateY(-20px); }
   }
-
   @keyframes cloudDrift2 {
-    from { 
-      transform: translateX(0) translateY(0);
-    }
-    to { 
-      transform: translateX(calc(100vw + 500px)) translateY(30px);
-    }
+    from { transform: translateX(0) translateY(0); }
+    to { transform: translateX(calc(100vw + 500px)) translateY(30px); }
   }
-
-  /* Nave espacial do Arrival - flutuando com parallax */
   .arrival-ship {
     position: fixed;
     top: 50%;
@@ -137,21 +61,17 @@
     transform: translate(-50%, -50%);
     width: 400px;
     height: 600px;
-    background: 
-      radial-gradient(ellipse at center, rgba(50, 60, 70, 0.5) 0%, rgba(30, 40, 50, 0.35) 50%, transparent 70%),
-      linear-gradient(180deg, rgba(40, 50, 60, 0.4) 0%, rgba(20, 30, 40, 0.3) 100%);
+    background: radial-gradient(ellipse at center, rgba(70, 90, 110, 0.65) 0%, rgba(40, 60, 80, 0.45) 50%, transparent 70%),
+      linear-gradient(180deg, rgba(60, 80, 100, 0.5) 0%, rgba(30, 50, 70, 0.35) 100%);
     border-radius: 50% / 60%;
-    opacity: 0.35;
+    opacity: 0.5;
     animation: float 8s ease-in-out infinite, glow 4s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
-    filter: blur(1.5px);
-    box-shadow: 
-      0 0 120px rgba(70, 80, 90, 0.4),
-      inset 0 0 80px rgba(50, 60, 70, 0.3);
+    filter: blur(1px);
+    box-shadow: 0 0 160px rgba(90, 110, 130, 0.6), inset 0 0 100px rgba(70, 90, 110, 0.4);
     transition: transform 0.5s ease-out;
   }
-
   .arrival-ship::before {
     content: '';
     position: absolute;
@@ -160,60 +80,32 @@
     transform: translate(-50%, -50%);
     width: 90%;
     height: 90%;
-    background: radial-gradient(ellipse at center, rgba(70, 85, 100, 0.2) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(90, 110, 130, 0.35) 0%, transparent 70%);
     border-radius: 50% / 60%;
     animation: pulse 3s ease-in-out infinite;
   }
-
   @keyframes float {
-    0%, 100% { 
-      transform: translate(-50%, -50%) translateY(0px) rotate(0deg); 
-    }
-    50% { 
-      transform: translate(-50%, -50%) translateY(-30px) rotate(2deg); 
-    }
+    0%, 100% { transform: translate(-50%, -50%) translateY(0px) rotate(0deg); }
+    50% { transform: translate(-50%, -50%) translateY(-30px) rotate(2deg); }
   }
-
   @keyframes glow {
-    0%, 100% { 
-      opacity: 0.3;
-      filter: blur(1.5px);
-    }
-    50% { 
-      opacity: 0.4;
-      filter: blur(2px);
-    }
+    0%, 100% { opacity: 0.45; filter: blur(1px); }
+    50% { opacity: 0.55; filter: blur(1.5px); }
   }
-
   @keyframes pulse {
-    0%, 100% { 
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.3;
-    }
-    50% { 
-      transform: translate(-50%, -50%) scale(1.1);
-      opacity: 0.5;
-    }
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.4; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.6; }
   }
-
-  /* Partículas de luz flutuantes */
-  .light-particles {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-  }
-
+  .light-particles { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
   .light-particle {
     position: absolute;
-    width: 3px;
-    height: 3px;
-    background: rgba(140, 155, 170, 0.5);
+    width: 4px;
+    height: 4px;
+    background: rgba(160, 180, 200, 0.8);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(120, 135, 150, 0.4);
+    box-shadow: 0 0 15px rgba(140, 160, 180, 0.7), 0 0 25px rgba(120, 140, 160, 0.4);
     animation: floatUp 15s linear infinite;
   }
-
   .light-particle:nth-child(1) { left: 10%; animation-delay: 0s; }
   .light-particle:nth-child(2) { left: 25%; animation-delay: -3s; }
   .light-particle:nth-child(3) { left: 40%; animation-delay: -6s; }
@@ -222,44 +114,22 @@
   .light-particle:nth-child(6) { left: 85%; animation-delay: -2s; }
   .light-particle:nth-child(7) { left: 15%; animation-delay: -7s; }
   .light-particle:nth-child(8) { left: 60%; animation-delay: -4s; }
-
   @keyframes floatUp {
-    from {
-      bottom: -20px;
-      opacity: 0;
-      transform: translateX(0) scale(0.5);
-    }
-    10% {
-      opacity: 0.8;
-    }
-    90% {
-      opacity: 0.8;
-    }
-    to {
-      bottom: 100vh;
-      opacity: 0;
-      transform: translateX(50px) scale(1.2);
-    }
+    from { bottom: -20px; opacity: 0; transform: translateX(0) scale(0.5); }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    to { bottom: 100vh; opacity: 0; transform: translateX(50px) scale(1.2); }
   }
-
-  /* Símbolos Heptapod */
-  .heptapod-symbols {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-  }
-
+  .heptapod-symbols { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
   .heptapod {
     position: absolute;
     width: 80px;
     height: 80px;
-    border: 2px solid rgba(120, 135, 150, 0.25);
+    border: 2px solid rgba(140, 160, 180, 0.45);
     border-radius: 50%;
-    box-shadow: 0 0 15px rgba(90, 105, 120, 0.2);
+    box-shadow: 0 0 25px rgba(110, 130, 150, 0.4), inset 0 0 15px rgba(100, 120, 140, 0.2);
     animation: rotateSymbol 30s linear infinite, fadeInOut 8s ease-in-out infinite;
   }
-
   .heptapod::before {
     content: '';
     position: absolute;
@@ -267,56 +137,20 @@
     left: 50%;
     width: 60%;
     height: 60%;
-    border: 1px solid rgba(120, 135, 150, 0.2);
+    border: 1px solid rgba(140, 160, 180, 0.35);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(90, 105, 120, 0.15);
+    box-shadow: 0 0 15px rgba(110, 130, 150, 0.3);
     transform: translate(-50%, -50%);
   }
-
   .heptapod1 { top: 15%; right: 10%; animation-delay: 0s; }
   .heptapod2 { top: 70%; left: 8%; animation-delay: -10s; }
   .heptapod3 { top: 40%; right: 15%; animation-delay: -20s; }
-
-  @keyframes rotateSymbol {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  @keyframes fadeInOut {
-    0%, 100% { opacity: 0.1; }
-    50% { opacity: 0.4; }
-  }
-
-  .container {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 80px 24px 120px;
-  }
-
-  h1 {
-    font-size: 3rem;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-    text-align: center;
-    margin-bottom: 60px;
-    overflow: hidden;
-  }
-
-  /* Efeito de digitação */
-  .typewriter {
-    display: inline-block;
-    opacity: 0;
-    animation: fadeInTitle 0.5s ease forwards;
-  }
-
-  .typewriter span {
-    display: inline-block;
-    opacity: 0;
-    animation: typeChar 0.1s ease forwards;
-  }
-
+  @keyframes rotateSymbol { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes fadeInOut { 0%, 100% { opacity: 0.2; } 50% { opacity: 0.6; } }
+  .container { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 80px 24px 120px; }
+  h1 { font-size: 3rem; font-weight: 300; letter-spacing: 0.1em; text-align: center; margin-bottom: 60px; overflow: hidden; }
+  .typewriter { display: inline-block; opacity: 0; animation: fadeInTitle 0.5s ease forwards; }
+  .typewriter span { display: inline-block; opacity: 0; animation: typeChar 0.1s ease forwards; }
   .typewriter span:nth-child(1) { animation-delay: 0.5s; }
   .typewriter span:nth-child(2) { animation-delay: 0.65s; }
   .typewriter span:nth-child(3) { animation-delay: 0.8s; }
@@ -324,45 +158,12 @@
   .typewriter span:nth-child(5) { animation-delay: 1.1s; }
   .typewriter span:nth-child(6) { animation-delay: 1.25s; }
   .typewriter span:nth-child(7) { animation-delay: 1.4s; }
-
-  @keyframes fadeInTitle {
-    to { opacity: 1; }
-  }
-
-  @keyframes typeChar {
-    to { opacity: 1; }
-  }
-
-  section {
-    margin-bottom: 80px;
-    opacity: 0;
-    transform: translateY(60px);
-    transition: opacity 1s ease, transform 1s ease;
-  }
-
-  section.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .subtitle {
-    font-size: 1.2rem;
-    letter-spacing: 0.15em;
-    color: #9fbec7;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    text-align: left;
-  }
-
-  p {
-    font-size: 1.05rem;
-    line-height: 1.9;
-    color: #d7e6ea;
-    text-align: justify;
-    text-justify: inter-word;
-  }
-
-  /* Círculo do Tempo - Versão Criativa */
+  @keyframes fadeInTitle { to { opacity: 1; } }
+  @keyframes typeChar { to { opacity: 1; } }
+  section { margin-bottom: 80px; opacity: 0; transform: translateY(60px); transition: opacity 1s ease, transform 1s ease; }
+  section.visible { opacity: 1; transform: translateY(0); }
+  .subtitle { font-size: 1.2rem; letter-spacing: 0.15em; color: #9fbec7; margin-bottom: 20px; text-transform: uppercase; text-align: left; }
+  p { font-size: 1.05rem; line-height: 1.9; color: #d7e6ea; text-align: justify; text-justify: inter-word; }
   .circle {
     width: 350px;
     height: 350px;
@@ -375,13 +176,7 @@
     transform: scale(0.8);
     transition: opacity 1s ease, transform 1s ease;
   }
-
-  .circle.visible {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  /* Círculo externo principal */
+  .circle.visible { opacity: 1; transform: scale(1); }
   .circle::before {
     content: '';
     position: absolute;
@@ -389,13 +184,9 @@
     height: 100%;
     border-radius: 50%;
     border: 2px solid rgba(120, 135, 150, 0.4);
-    box-shadow: 
-      0 0 40px rgba(90, 105, 120, 0.25),
-      inset 0 0 40px rgba(80, 95, 110, 0.2);
+    box-shadow: 0 0 40px rgba(90, 105, 120, 0.25), inset 0 0 40px rgba(80, 95, 110, 0.2);
     animation: rotate 60s linear infinite;
   }
-
-  /* Círculo do meio com rotação */
   .circle::after {
     content: '';
     position: absolute;
@@ -407,47 +198,12 @@
     border-right-color: rgba(140, 155, 170, 0.5);
     animation: rotate-reverse 40s linear infinite;
   }
-
-  /* Anéis orbitais */
-  .time-ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid rgba(120, 135, 150, 0.3);
-  }
-
-  .ring1 {
-    width: 85%;
-    height: 85%;
-    border-style: dotted;
-    animation: rotate 50s linear infinite;
-  }
-
-  .ring2 {
-    width: 55%;
-    height: 55%;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    animation: rotate-reverse 35s linear infinite;
-  }
-
-  .ring3 {
-    width: 40%;
-    height: 40%;
-    border-top-color: rgba(168, 215, 224, 0.5);
-    border-bottom-color: transparent;
-    animation: rotate 25s linear infinite;
-  }
-
-  /* Símbolo do infinito no centro */
-  .infinity {
-    position: relative;
-    width: 80px;
-    height: 40px;
-    z-index: 2;
-  }
-
-  .infinity::before,
-  .infinity::after {
+  .time-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(120, 135, 150, 0.3); }
+  .ring1 { width: 85%; height: 85%; border-style: dotted; animation: rotate 50s linear infinite; }
+  .ring2 { width: 55%; height: 55%; border-left-color: transparent; border-right-color: transparent; animation: rotate-reverse 35s linear infinite; }
+  .ring3 { width: 40%; height: 40%; border-top-color: rgba(168, 215, 224, 0.5); border-bottom-color: transparent; animation: rotate 25s linear infinite; }
+  .infinity { position: relative; width: 80px; height: 40px; z-index: 2; }
+  .infinity::before, .infinity::after {
     content: '';
     position: absolute;
     width: 40px;
@@ -456,18 +212,8 @@
     border-radius: 50%;
     box-shadow: 0 0 20px rgba(110, 125, 140, 0.35);
   }
-
-  .infinity::before {
-    left: 0;
-    animation: pulse-left 3s ease-in-out infinite;
-  }
-
-  .infinity::after {
-    right: 0;
-    animation: pulse-right 3s ease-in-out infinite;
-  }
-
-  /* Partículas orbitando */
+  .infinity::before { left: 0; animation: pulse-left 3s ease-in-out infinite; }
+  .infinity::after { right: 0; animation: pulse-right 3s ease-in-out infinite; }
   .particle {
     position: absolute;
     width: 4px;
@@ -476,124 +222,19 @@
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(120, 135, 150, 0.4);
   }
-
-  .particle1 {
-    top: 10%;
-    left: 50%;
-    animation: orbit1 20s linear infinite;
-  }
-
-  .particle2 {
-    top: 50%;
-    right: 10%;
-    animation: orbit2 25s linear infinite;
-  }
-
-  .particle3 {
-    bottom: 10%;
-    left: 50%;
-    animation: orbit1 30s linear infinite;
-    animation-delay: -10s;
-  }
-
-  .particle4 {
-    top: 50%;
-    left: 10%;
-    animation: orbit2 22s linear infinite;
-    animation-delay: -15s;
-  }
-
-  @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  @keyframes rotate-reverse {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
-  }
-
-  @keyframes pulse-left {
-    0%, 100% { 
-      transform: scale(1);
-      opacity: 0.6;
-    }
-    50% { 
-      transform: scale(1.1);
-      opacity: 0.9;
-    }
-  }
-
-  @keyframes pulse-right {
-    0%, 100% { 
-      transform: scale(1);
-      opacity: 0.6;
-    }
-    50% { 
-      transform: scale(1.1);
-      opacity: 0.9;
-    }
-  }
-
-  @keyframes orbit1 {
-    from { 
-      transform: rotate(0deg) translateX(175px) rotate(0deg);
-    }
-    to { 
-      transform: rotate(360deg) translateX(175px) rotate(-360deg);
-    }
-  }
-
-  @keyframes orbit2 {
-    from { 
-      transform: rotate(0deg) translateX(120px) rotate(0deg);
-    }
-    to { 
-      transform: rotate(360deg) translateX(120px) rotate(-360deg);
-    }
-  }
-
-  .image-block {
-    margin: 100px auto;
-    max-width: 720px;
-    text-align: center;
-  }
-
-  .image-block img {
-    width: 100%;
-    border-radius: 12px;
-    opacity: 0.85;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-  }
-
-  .image-caption {
-    margin-top: 12px;
-    font-size: 0.85rem;
-    opacity: 0.6;
-    letter-spacing: 0.1em;
-  }
-
-  .final {
-    text-align: justify;
-    font-size: 1.05rem;
-    line-height: 1.9;
-    margin-top: 120px;
-  }
-
-  .final span {
-    color: #a8d7e0;
-    font-weight: 600;
-  }
-
-  footer {
-    text-align: center;
-    margin-top: 80px;
-    margin-bottom: 40px;
-    font-size: 0.9rem;
-    opacity: 0.6;
-  }
-
-  /* Botão voltar ao topo */
+  .particle1 { top: 10%; left: 50%; animation: orbit1 20s linear infinite; }
+  .particle2 { top: 50%; right: 10%; animation: orbit2 25s linear infinite; }
+  .particle3 { bottom: 10%; left: 50%; animation: orbit1 30s linear infinite; animation-delay: -10s; }
+  .particle4 { top: 50%; left: 10%; animation: orbit2 22s linear infinite; animation-delay: -15s; }
+  @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  @keyframes rotate-reverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+  @keyframes pulse-left { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.1); opacity: 0.9; } }
+  @keyframes pulse-right { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.1); opacity: 0.9; } }
+  @keyframes orbit1 { from { transform: rotate(0deg) translateX(175px) rotate(0deg); } to { transform: rotate(360deg) translateX(175px) rotate(-360deg); } }
+  @keyframes orbit2 { from { transform: rotate(0deg) translateX(120px) rotate(0deg); } to { transform: rotate(360deg) translateX(120px) rotate(-360deg); } }
+  .final { text-align: justify; font-size: 1.05rem; line-height: 1.9; margin-top: 120px; }
+  .final span { color: #a8d7e0; font-weight: 600; }
+  footer { text-align: center; margin-top: 80px; margin-bottom: 40px; font-size: 0.9rem; opacity: 0.6; }
   .back-to-top {
     position: fixed;
     bottom: 40px;
@@ -613,179 +254,50 @@
     z-index: 100;
     backdrop-filter: blur(10px);
   }
-
-  .back-to-top.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .back-to-top:hover {
-    background: rgba(159, 190, 199, 0.3);
-    box-shadow: 0 0 30px rgba(159, 190, 199, 0.4);
-    transform: translateY(-5px);
-  }
-
-  .back-to-top::before {
-    content: '↑';
-    font-size: 24px;
-    color: #a8d7e0;
-  }
-
-  /* Media Queries para Mobile/iPhone */
+  .back-to-top.visible { opacity: 1; transform: translateY(0); }
+  .back-to-top:hover { background: rgba(159, 190, 199, 0.3); box-shadow: 0 0 30px rgba(159, 190, 199, 0.4); transform: translateY(-5px); }
+  .back-to-top::before { content: '↑'; font-size: 24px; color: #a8d7e0; }
   @media (max-width: 768px) {
-    body {
-      overflow-x: hidden;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    /* Ajuste do título para mobile */
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 40px;
-      padding: 0 20px;
-    }
-
-    /* Container mais compacto */
-    .container {
-      padding: 60px 20px 100px;
-    }
-
-    /* Subtítulos menores */
-    .subtitle {
-      font-size: 0.95rem;
-      letter-spacing: 0.12em;
-      margin-bottom: 16px;
-    }
-
-    /* Texto mais legível no mobile */
-    p {
-      font-size: 0.95rem;
-      line-height: 1.75;
-      text-align: left;
-    }
-
-    /* Seções mais compactas */
-    section {
-      margin-bottom: 60px;
-    }
-
-    /* Círculo do tempo menor */
-    .circle {
-      width: 280px;
-      height: 280px;
-      margin: 80px auto;
-    }
-
-    /* Nave menor e mais sutil no mobile */
-    .arrival-ship {
-      width: 300px;
-      height: 450px;
-      opacity: 0.25;
-    }
-
-    /* Nuvens menores */
-    .cloud1, .cloud2, .cloud3, .cloud4, .cloud5 {
-      width: 250px;
-      height: 100px;
-    }
-
-    /* Partículas menos densas no mobile */
-    .light-particle:nth-child(n+6) {
-      display: none;
-    }
-
-    /* Símbolos Heptapod menores */
-    .heptapod {
-      width: 60px;
-      height: 60px;
-    }
-
-    /* Botão voltar ao topo adaptado para iPhone */
-    .back-to-top {
-      bottom: 30px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-    }
-
-    .back-to-top::before {
-      font-size: 20px;
-    }
-
-    /* Footer mais compacto */
-    footer {
-      margin-top: 60px;
-      margin-bottom: 30px;
-      font-size: 0.85rem;
-      padding: 0 20px;
-    }
-
-    /* Final text mais compacto */
-    .final {
-      margin-top: 80px;
-      font-size: 0.95rem;
-      line-height: 1.75;
-    }
-
-    /* Ajuste para safe area do iPhone (notch) */
+    body { overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+    h1 { font-size: 2rem; margin-bottom: 40px; padding: 0 20px; }
+    .container { padding: 60px 20px 100px; }
+    .subtitle { font-size: 0.95rem; letter-spacing: 0.12em; margin-bottom: 16px; }
+    p { font-size: 0.95rem; line-height: 1.75; text-align: left; }
+    section { margin-bottom: 60px; }
+    .circle { width: 280px; height: 280px; margin: 80px auto; }
+    .arrival-ship { width: 300px; height: 450px; opacity: 0.35; }
+    .cloud1, .cloud2, .cloud3, .cloud4, .cloud5 { width: 250px; height: 100px; }
+    .light-particle:nth-child(n+6) { display: none; }
+    .heptapod { width: 60px; height: 60px; }
+    .back-to-top { bottom: 30px; right: 20px; width: 50px; height: 50px; }
+    .back-to-top::before { font-size: 20px; }
+    footer { margin-top: 60px; margin-bottom: 30px; font-size: 0.85rem; padding: 0 20px; }
+    .final { margin-top: 80px; font-size: 0.95rem; line-height: 1.75; }
     .container {
       padding-top: max(60px, env(safe-area-inset-top));
       padding-bottom: max(100px, env(safe-area-inset-bottom));
       padding-left: max(20px, env(safe-area-inset-left));
       padding-right: max(20px, env(safe-area-inset-right));
     }
-
-    /* Botão com safe area */
     .back-to-top {
       bottom: max(30px, calc(env(safe-area-inset-bottom) + 20px));
       right: max(20px, calc(env(safe-area-inset-right) + 10px));
     }
   }
-
-  /* iPhone específico (iPhone X e superiores com notch) */
   @media (max-width: 430px) {
-    h1 {
-      font-size: 1.75rem;
-    }
-
-    .circle {
-      width: 240px;
-      height: 240px;
-    }
-
-    .arrival-ship {
-      width: 250px;
-      height: 375px;
-    }
+    h1 { font-size: 1.75rem; }
+    .circle { width: 240px; height: 240px; }
+    .arrival-ship { width: 250px; height: 375px; }
   }
-
-  /* Modo paisagem no mobile */
   @media (max-width: 768px) and (orientation: landscape) {
-    .arrival-ship {
-      width: 200px;
-      height: 300px;
-    }
-
-    .circle {
-      width: 200px;
-      height: 200px;
-      margin: 40px auto;
-    }
-
-    h1 {
-      font-size: 1.5rem;
-      margin-bottom: 30px;
-    }
-
-    section {
-      margin-bottom: 40px;
-    }
+    .arrival-ship { width: 200px; height: 300px; }
+    .circle { width: 200px; height: 200px; margin: 40px auto; }
+    h1 { font-size: 1.5rem; margin-bottom: 30px; }
+    section { margin-bottom: 40px; }
   }
 </style>
-
 </head>
 <body>
-  <!-- Nuvens em movimento -->
   <div class="clouds">
     <div class="cloud cloud1"></div>
     <div class="cloud cloud2"></div>
@@ -793,8 +305,6 @@
     <div class="cloud cloud4"></div>
     <div class="cloud cloud5"></div>
   </div>
-
-  <!-- Partículas de luz -->
   <div class="light-particles">
     <div class="light-particle"></div>
     <div class="light-particle"></div>
@@ -805,40 +315,27 @@
     <div class="light-particle"></div>
     <div class="light-particle"></div>
   </div>
-
-  <!-- Símbolos Heptapod -->
   <div class="heptapod-symbols">
     <div class="heptapod heptapod1"></div>
     <div class="heptapod heptapod2"></div>
     <div class="heptapod heptapod3"></div>
   </div>
-  
   <div class="arrival-ship"></div>
-
-  <!-- Botão voltar ao topo -->
   <div class="back-to-top" id="backToTop"></div>
-
   <div class="container">
     <h1>
       <span class="typewriter">
         <span>A</span><span>R</span><span>R</span><span>I</span><span>V</span><span>A</span><span>L</span>
       </span>
     </h1>
-
     <section>
       <div class="subtitle">A Chegada</div>
-      <p>
-        Esse filme me ensinou que algumas coisas não aparecem por acaso. Elas chegam silenciosas. Confesso que realmente mudou a minha percepção, mas não só do tempo...
-      </p>
+      <p>Esse filme me ensinou que algumas coisas não aparecem por acaso. Elas chegam silenciosas. Confesso que realmente mudou a minha percepção, mas não só do tempo...</p>
     </section>
-
     <section>
       <div class="subtitle">O Tempo</div>
-      <p>
-        Em Arrival, o tempo não é uma linha reta. Ele é um círculo. Nós acreditamos que o tempo decorre de forma linear, que ele avança uniformemente para sempre, até o infinito. Mas a diferenciação entre presente, passado e futuro não passa de uma ilusão. O ontem, o hoje e o amanhã não se sucedem, mas estão conectados em um círculo infinito. Tudo está conectado. Tudo que começa, já terminou. Tudo que termina, sempre esteve lá.
-      </p>
+      <p>Em Arrival, o tempo não é uma linha reta. Ele é um círculo. Nós acreditamos que o tempo decorre de forma linear, que ele avança uniformemente para sempre, até o infinito. Mas a diferenciação entre presente, passado e futuro não passa de uma ilusão. O ontem, o hoje e o amanhã não se sucedem, mas estão conectados em um círculo infinito. Tudo está conectado. Tudo que começa, já terminou. Tudo que termina, sempre esteve lá.</p>
     </section>
-
     <div class="circle">
       <div class="time-ring ring1"></div>
       <div class="time-ring ring2"></div>
@@ -849,84 +346,52 @@
       <div class="particle particle3"></div>
       <div class="particle particle4"></div>
     </div>
-
     <section>
       <div class="subtitle">Imparável</div>
-      <p>
-        Talvez esse momento do filme seja um dos mais tocantes, não porque cita de forma implícita a doença da filha, mas sim porque é ali que a Louise expressa tudo que a filha representa na vida dela: a pureza do olhar, a energia contagiosa, é tão chamativo. Mesmo que por tão pouco tempo, a filha era o momento mais sincero de toda vida dela. Mesmo sabendo o fim, ela escolhe viver. Porque algumas vidas não são definidas pela duração, mas pelo impacto que deixam. Pra mim, você é imparável, Nicolle. Enxergo que já passou por muitas coisas ruins, a resiliência e independência caminham de mãos dadas dentro de você. Eu não sou um grande conhecedor de muitas coisas, mas agradeço todos os dias por estar conhecendo cada parte de você. O seu mundo me interessa muito mais!
-      </p>
+      <p>Talvez esse momento do filme seja um dos mais tocantes, não porque cita de forma implícita a doença da filha, mas sim porque é ali que a Louise expressa tudo que a filha representa na vida dela: a pureza do olhar, a energia contagiosa, é tão chamativo. Mesmo que por tão pouco tempo, a filha era o momento mais sincero de toda vida dela. Mesmo sabendo o fim, ela escolhe viver. Porque algumas vidas não são definidas pela duração, mas pelo impacto que deixam. Pra mim, você é imparável, Nicolle. Enxergo que já passou por muitas coisas ruins, a resiliência e independência caminham de mãos dadas dentro de você. Eu não sou um grande conhecedor de muitas coisas, mas agradeço todos os dias por estar conhecendo cada parte de você. O seu mundo me interessa muito mais!</p>
     </section>
-
     <section>
       <div class="subtitle">"Se você soubesse o que vai acontecer... ainda assim faria tudo de novo?"</div>
-      <p>
-        É uma pergunta tão melancólica que todos os meus sentidos ficam aguçados apontando diretamente pra você, porque eu vejo tanto valor na vida. Eu não sei como realmente o tempo funciona, mas se fosse realmente dessa forma, eu escolheria esse momento. Uma das coisas que mais me atraem é a forma como você me transmite sua visão de mundo: extremamente singela, puramente induzente, me trazendo todos os mais sinceros desejos de querer viver a vida com você. Então sim, se eu pudesse ver tudo, ainda assim escolheria esse momento. Independente de como tudo termine, você é minha escolha.
-      </p>
+      <p>É uma pergunta tão melancólica que todos os meus sentidos ficam aguçados apontando diretamente pra você, porque eu vejo tanto valor na vida. Eu não sei como realmente o tempo funciona, mas se fosse realmente dessa forma, eu escolheria esse momento. Uma das coisas que mais me atraem é a forma como você me transmite sua visão de mundo: extremamente singela, puramente induzente, me trazendo todos os mais sinceros desejos de querer viver a vida com você. Então sim, se eu pudesse ver tudo, ainda assim escolheria esse momento. Independente de como tudo termine, você é minha escolha.</p>
     </section>
-
     <div class="final">
-      <p>
-        <span>No fim, o filme nunca se tratou exatamente sobre aliens...</span> A chegada sempre foi sobre a filha. E eu penso nesse peso emocional que é ter um mini ser que se espelha exatamente em você. Pra mim é uma coisa muito séria, e escolher alguém pra amar e cuidar é muito difícil. Pelo menos eu achava isso, mas agora eu sei que encontrei a melhor pessoa e nada nem ninguém me fará mudar de ideia. Eu te amo. Você é o presente mais valioso que o tempo pode me dar.
-      </p>
+      <p><span>No fim, o filme nunca se tratou exatamente sobre aliens...</span> A chegada sempre foi sobre a filha. E eu penso nesse peso emocional que é ter um mini ser que se espelha exatamente em você. Pra mim é uma coisa muito séria, e escolher alguém pra amar e cuidar é muito difícil. Pelo menos eu achava isso, mas agora eu sei que encontrei a melhor pessoa e nada nem ninguém me fará mudar de ideia. Eu te amo. Você é o presente mais valioso que o tempo pode me dar.</p>
     </div>
-
-    <footer>
-      Para você — no tempo certo.
-    </footer>
+    <footer>Para você — no tempo certo.</footer>
   </div>
-
   <script>
-    // Detectar se é mobile
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    
-    // Efeito parallax no scroll (reduzido para mobile)
-    let lastScroll = 0;
     let ticking = false;
-    
     function updateParallax() {
       const scrolled = window.pageYOffset;
       const ship = document.querySelector('.arrival-ship');
       const clouds = document.querySelector('.clouds');
-      
-      // Parallax mais sutil no mobile
       const parallaxMultiplier = isMobile ? 0.15 : 0.3;
       const cloudsMultiplier = isMobile ? 0.08 : 0.15;
-      
-      // Parallax da nave (move mais devagar)
       if (ship) {
         ship.style.transform = `translate(-50%, calc(-50% + ${scrolled * parallaxMultiplier}px))`;
       }
-      
-      // Parallax das nuvens (move um pouco mais rápido)
       if (clouds) {
         clouds.style.transform = `translateY(${scrolled * cloudsMultiplier}px)`;
       }
-
-      // Mostrar botão voltar ao topo
       const backToTop = document.getElementById('backToTop');
       if (scrolled > 500) {
         backToTop.classList.add('visible');
       } else {
         backToTop.classList.remove('visible');
       }
-
-      lastScroll = scrolled;
       ticking = false;
     }
-    
     window.addEventListener('scroll', () => {
       if (!ticking) {
         window.requestAnimationFrame(updateParallax);
         ticking = true;
       }
     }, { passive: true });
-
-    // Animação de scroll para seções (com threshold ajustado para mobile)
     const observerOptions = {
       threshold: isMobile ? 0.1 : 0.2,
       rootMargin: isMobile ? '0px 0px -50px 0px' : '0px 0px -100px 0px'
     };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -934,21 +399,12 @@
         }
       });
     }, observerOptions);
-
-    // Observar todas as seções e o círculo
     document.querySelectorAll('section, .circle').forEach(section => {
       observer.observe(section);
     });
-
-    // Botão voltar ao topo com smooth scroll
     document.getElementById('backToTop').addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    // Prevenir zoom no iPhone ao dar duplo clique
     let lastTouchEnd = 0;
     document.addEventListener('touchend', (e) => {
       const now = Date.now();
@@ -957,19 +413,6 @@
       }
       lastTouchEnd = now;
     }, false);
-
-    // Melhorar performance de animações no mobile
-    if (isMobile) {
-      // Reduzir algumas partículas de luz para melhor performance
-      const particles = document.querySelectorAll('.light-particle');
-      particles.forEach((particle, index) => {
-        if (index >= 5) {
-          particle.style.display = 'none';
-        }
-      });
-    }
-
-    // Adicionar classe ao body quando estiver no mobile
     if (isMobile) {
       document.body.classList.add('is-mobile');
     }
