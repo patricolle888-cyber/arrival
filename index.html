@@ -15,7 +15,7 @@
 
   body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #0a0f14 0%, #1a2632 50%, #0f1419 100%);
+    background: #0a0f14;
     color: #e6f0f2;
     min-height: 100vh;
     overflow-x: hidden;
@@ -615,57 +615,6 @@
     font-size: 24px;
     color: #a8d7e0;
   }
-
-  /* Controle de música */
-  .music-control {
-    position: fixed;
-    bottom: 40px;
-    left: 40px;
-    width: 60px;
-    height: 60px;
-    background: rgba(159, 190, 199, 0.2);
-    border: 2px solid rgba(159, 190, 199, 0.4);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 100;
-    backdrop-filter: blur(10px);
-  }
-
-  .music-control:hover {
-    background: rgba(159, 190, 199, 0.3);
-    box-shadow: 0 0 30px rgba(159, 190, 199, 0.4);
-    transform: scale(1.1);
-  }
-
-  .music-control.playing::before {
-    content: '⏸';
-    font-size: 24px;
-    color: #a8d7e0;
-  }
-
-  .music-control:not(.playing)::before {
-    content: '▶';
-    font-size: 20px;
-    color: #a8d7e0;
-    padding-left: 3px;
-  }
-
-  .music-control.playing {
-    animation: musicPulse 2s ease-in-out infinite;
-  }
-
-  @keyframes musicPulse {
-    0%, 100% { 
-      box-shadow: 0 0 20px rgba(168, 215, 224, 0.3);
-    }
-    50% { 
-      box-shadow: 0 0 40px rgba(168, 215, 224, 0.6);
-    }
-  }
 </style>
 
 </head>
@@ -701,9 +650,6 @@
   </div>
   
   <div class="arrival-ship"></div>
-
-  <!-- Controle de música -->
-  <div class="music-control" id="musicControl"></div>
 
   <!-- Botão voltar ao topo -->
   <div class="back-to-top" id="backToTop"></div>
@@ -765,11 +711,6 @@
     </footer>
   </div>
 
-  <!-- Áudio -->
-  <audio id="bgMusic" loop>
-    <source src="https://cdn.jsdelivr.net/gh/wowfactor/musics@main/on-the-nature-of-daylight.mp3" type="audio/mpeg">
-  </audio>
-
   <script>
     // Efeito parallax no scroll
     let lastScroll = 0;
@@ -824,33 +765,6 @@
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
-      });
-    });
-
-    // Controle de música
-    const music = document.getElementById('bgMusic');
-    const musicControl = document.getElementById('musicControl');
-    let isPlaying = false;
-
-    musicControl.addEventListener('click', () => {
-      if (isPlaying) {
-        music.pause();
-        musicControl.classList.remove('playing');
-      } else {
-        music.play().catch(e => console.log('Autoplay bloqueado:', e));
-        musicControl.classList.add('playing');
-      }
-      isPlaying = !isPlaying;
-    });
-
-    // Tentar autoplay (pode ser bloqueado pelo navegador)
-    window.addEventListener('load', () => {
-      music.play().then(() => {
-        isPlaying = true;
-        musicControl.classList.add('playing');
-      }).catch(() => {
-        // Autoplay bloqueado - usuário precisa clicar no botão de música
-        console.log('Clique no botão de música para iniciar');
       });
     });
   </script>
